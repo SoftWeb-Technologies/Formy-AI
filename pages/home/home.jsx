@@ -7,7 +7,7 @@ function HomePage() {
     <div>
       <Navbar />
       <HeroSection />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
