@@ -36,7 +36,7 @@ function Navbar() {
         <Link href={"/"} className="w-[35px] md:w-[100px] flex items-center">
           {/* <Image src={images.FormAiLogo} alt="FormAi-logo" /> */}
           <span className="text-2xl md:text-3xl font-semibold text-white">
-            FormAi
+            FormyAi
           </span>
         </Link>
         <div>
