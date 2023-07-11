@@ -32,11 +32,11 @@ function Navbar() {
         scrollPosition ? "bg-[#7f56f2] shadow-lg" : ""
       } duration-500`}
     >
-      <div className="flex justify-between items-center px-[5%] py-3">
+      <div className="flex justify-between items-center w-[85%] mx-auto py-5">
         <Link href={"/"} className="w-[35px] md:w-[100px] flex items-center">
           {/* <Image src={images.FormAiLogo} alt="FormAi-logo" /> */}
           <span className="text-2xl md:text-3xl font-semibold text-white">
-            FormyAi
+            FormyAI
           </span>
         </Link>
         <div>
