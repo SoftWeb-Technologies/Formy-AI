@@ -42,9 +42,9 @@ function Navbar() {
         <div>
           <div className="hidden md:block">
             <NavbarMenu href={"/"} menuName={"Solutions"} />
-            <NavbarMenu href={"/templates"} menuName={"Templates"} />
-            <NavbarMenu href={"/templates"} menuName={"Pricing"} />
-            <NavbarMenu href={"https://devhubhq.me"} menuName={"Resources"} />
+            <NavbarMenu href={"/"} menuName={"Templates"} />
+            <NavbarMenu href={"/"} menuName={"Pricing"} />
+            <NavbarMenu href={"/"} menuName={"Resources"} />
 
             <Link
               href={"/auth/signin"}
