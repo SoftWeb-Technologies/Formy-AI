@@ -1,12 +1,7 @@
-import { View, Text } from "react-native";
 import React from "react";
 
-const PageNotFound = () => {
-  return (
-    <View>
-      <Text>PageNotFound</Text>
-    </View>
-  );
-};
+function PageNotFound() {
+  return <div>PageNotFound</div>;
+}
 
 export default PageNotFound;

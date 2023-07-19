@@ -8,7 +8,7 @@
     }
 
     .btn {
-        @apply p-2 flex items-center gap-1 hover: bg-gray-100 rounded leading-none transition-colors;
+        @apply p-2 flex items-center gap-1 hover:bg-gray-100 rounded leading-none transition-colors;
     }
 
     .btn-primary {
