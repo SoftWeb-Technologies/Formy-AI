@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useEffect } from "react";
+import { images } from "../core/images";
 
 function Navbar() {
   const [toggle, setToggle] = useState(false);
@@ -33,12 +34,21 @@ function Navbar() {
       } duration-500`}
     >
       <div className="flex justify-between items-center w-[85%] mx-auto py-5">
-        <Link href={"/"} className="w-[35px] md:w-[100px] flex items-center">
-          {/* <Image src={images.FormAiLogo} alt="FormAi-logo" /> */}
-          <span className="text-2xl md:text-3xl font-semibold text-white">
-            FormyAI
-          </span>
-        </Link>
+        <div className="flex items-center">
+          <div className="w-[29px] md:w-[35px]">
+            <Image
+              src={images.lightLogoImg}
+              alt="FormAi-logo"
+              width="100%"
+              className="object-fill"
+            />
+          </div>
+          <Link href={"/"} className="flex items-center">
+            <span className="text-2xl md:text-3xl font-semibold text-white">
+              FormyAI
+            </span>
+          </Link>
+        </div>
         <div>
           <div className="hidden md:block">
             <NavbarMenu href={"/"} menuName={"Solutions"} />
