@@ -55,13 +55,17 @@ function Navbar() {
             <NavbarMenu href={"/"} menuName={"Resources"} />
 
             <Link
-              href={"/auth/sign"}
+              href={{
+                pathname: "/signInSignUp",
+              }}
               className="hidden md:ml-5 md:inline-block bg-white text-[#7f56f2] hover:scale-105 duration-500 px-5 py-2 rounded-md text-[16px] font-semibold"
             >
               Sign In
             </Link>
             <Link
-              href={"/auth/signup"}
+              href={{
+                pathname: "/signInSignUp",
+              }}
               className="hidden md:ml-2 md:inline-block bg-black text-white hover:scale-105 duration-500 px-5 py-2 rounded-md text-[16px] font-semibold"
             >
               Sign Up Free
