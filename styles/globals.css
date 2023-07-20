@@ -12,7 +12,7 @@
     }
 
     .btn-primary {
-        @apply bg-red-500 hover: bg-red-600 text-white;
+        @apply bg-red-500 hover:bg-red-600 text-white;
     }
 
     .custom-scrollbar::-webkit-scrollbar {
