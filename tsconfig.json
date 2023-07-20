@@ -16,6 +16,12 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/404.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/404.js",
+    "pages/home/components/Feature.js"
+  ],
   "exclude": ["node_modules"]
 }

@@ -25,8 +25,6 @@ function Navbar() {
     };
   }, []);
 
-  console.log(scrollPosition);
-
   return (
     <div
       className={`w-full fixed top-0 z-50 ${
@@ -57,7 +55,7 @@ function Navbar() {
             <NavbarMenu href={"/"} menuName={"Resources"} />
 
             <Link
-              href={"/auth/signin"}
+              href={"/auth/sign"}
               className="hidden md:ml-5 md:inline-block bg-white text-[#7f56f2] hover:scale-105 duration-500 px-5 py-2 rounded-md text-[16px] font-semibold"
             >
               Sign In

@@ -1,5 +1,5 @@
 import React from "react";
-import { Footer, HeroSection } from "./components";
+import { FeatureSection, Footer, HeroSection } from "./components";
 import Navbar from "../../components/Navbar";
 
 function HomePage() {
@@ -7,7 +7,8 @@ function HomePage() {
     <div>
       <Navbar />
       <HeroSection />
-      {/* <Footer /> */}
+      <FeatureSection />
+      <Footer />
     </div>
   );
 }
