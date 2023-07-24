@@ -51,6 +51,7 @@ const EditPage: NextPage<PageProps> = ({ form, notAllowed }) => {
     }
 
     return (
+        // eslint-disable-next-line react/no-children-prop
         <Layout>
             <SEO title={title ? title : 'Untitled form'} icon={header.icon} />
             <Sidebar show={showSidebar} />
@@ -75,8 +76,8 @@ export const getServerSideProps: GetServerSideProps = async ({
     res,
     query,
 }) => {
-    const session = getSession(req, res)
-    const user = session && session.user
+    //const session = Getsession(req, res)
+    //const user = session && session.user
 
     if (!user) {
         return {
@@ -111,11 +112,11 @@ export const getServerSideProps: GetServerSideProps = async ({
 
     return {
         props: {
-            user,
+            //user,
             form: form,
-            notAllowed: form.workspace !== user.sub,
+            //notAllowed: form.workspace !== user.sub,
         },
     }
 }
 
-export default EditPage
+export { EditPage }
