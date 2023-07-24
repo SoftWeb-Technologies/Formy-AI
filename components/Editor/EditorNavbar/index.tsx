@@ -14,11 +14,11 @@ import {
     TrashIcon,
 } from '@heroicons/react/outline'
 
-import { blocksAtom, headerAtom, optionsAtom, styleAtom } from 'lib/atoms/form'
-import { LabelSwitch } from 'components/editor/LabelSwitch'
-import { formOptions, formStyle } from 'lib/types/form'
+import { blocksAtom, headerAtom, optionsAtom, styleAtom } from '../../../lib/atoms/form'
+import { LabelSwitch } from '../../../components/Editor/LabelSwitch/index'
+import { formOptions, formStyle } from '../../../lib/types/form'
 import { mutate } from 'swr'
-import { useFetchAll } from 'lib/hooks/useFetchAll'
+import { useFetchAll } from '../../../lib/hooks/useFetchAll'
 
 const fontStyles = [
     { label: 'Default', class: 'font-sans' },

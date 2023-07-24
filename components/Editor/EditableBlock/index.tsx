@@ -10,7 +10,7 @@ import {
     ViewGridIcon,
 } from '@heroicons/react/outline'
 
-import { blocksAtom } from 'lib/atoms/form'
+import { blocksAtom } from '../../../lib/atoms/form'
 import blockTypes from '../../../lib/blocks.json'
 import { formBlock } from '../../../lib/types/form'
 import { useBlocks } from '../../../lib/hooks/useBlocks'
@@ -32,7 +32,7 @@ const EditableBlock = ({
     const [showPlaceholder, setShowPlaceholder] = React.useState<boolean>(true)
     const [showBlockSelect, setShowBlockSelect] = React.useState<boolean>(false)
     const [options, setOptions] = React.useState<any[]>(blockTypes)
-    const { addBlock, removeBlock } = useBlock()
+    const { addBlock, removeBlock } = setBlocks()
 
     React.useEffect(() => {
         let selectedBlock = 0
