@@ -1,0 +1,15 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-formai-staging-181239-authRole",
+      "UnauthRoleArn": "arn:aws:iam::000706442586:role/amplify-formai-staging-181239-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::000706442586:role/amplify-formai-staging-181239-authRole",
+      "Region": "eu-north-1",
+      "DeploymentBucketName": "amplify-formai-staging-181239-deployment",
+      "UnauthRoleName": "amplify-formai-staging-181239-unauthRole",
+      "StackName": "amplify-formai-staging-181239",
+      "StackId": "arn:aws:cloudformation:eu-north-1:000706442586:stack/amplify-formai-staging-181239/acebb180-2a4d-11ee-ad87-06d5ff0e6c6c",
+      "AmplifyAppId": "d15tfrert7nyoi"
+    }
+  }
+}
