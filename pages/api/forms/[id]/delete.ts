@@ -1,4 +1,4 @@
-
+import { NextApiRequest, NextApiResponse } from 'next'
 
 const INSTANCE = process.env.HARPERDB_URL
 const TOKEN = process.env.HARPERDB_TOKEN

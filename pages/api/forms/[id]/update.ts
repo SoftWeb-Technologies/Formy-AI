@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { withApiAuthRequired } from '@auth0/nextjs-auth0'
+
 
 const INSTANCE = process.env.HARPERDB_URL
 const TOKEN = process.env.HARPERDB_TOKEN
 
-export default withApiAuthRequired(async function handler(
+export default (async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
