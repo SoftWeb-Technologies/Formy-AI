@@ -10,6 +10,7 @@ import {
   styleAtom,
   titleAtom,
 } from "../lib/atoms/form";
+
 import { Layout } from "../components/Layout";
 import { SEO } from "../components/common/SEO";
 import { Sidebar } from "../components/Editor/Sidebar";

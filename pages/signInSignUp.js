@@ -6,8 +6,6 @@ import Image from "next/image";
 import { images } from "../core/images";
 import Link from "next/link";
 
-import awsExports from "../src/aws-exports";
-Amplify.configure(awsExports);
 
 export default function SignInSignUp() {
   const services = {
