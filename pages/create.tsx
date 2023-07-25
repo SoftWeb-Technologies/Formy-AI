@@ -3,9 +3,6 @@ import { NextPage } from "next";
 import { useAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
-import { EditorNavbar } from "../components/editor/EditorNavbar";
-import { EditorHeader } from "../components/editor/EditorHeader";
-import { EditablePage } from "../components/editor/EditablePage";
 import {
   blocksAtom,
   headerAtom,
@@ -13,9 +10,12 @@ import {
   styleAtom,
   titleAtom,
 } from "../lib/atoms/form";
-import { Sidebar } from "../components/editor/Sidebar";
 import { Layout } from "../components/Layout";
 import { SEO } from "../components/common/SEO";
+import { Sidebar } from "../components/Editor/Sidebar";
+import { EditorNavbar } from "../components/Editor/EditorNavbar";
+import { EditorHeader } from "../components/Editor/EditorHeader";
+import { EditablePage } from "../components/Editor/EditablePage";
 
 export const sidebarAtom = atomWithStorage("showSidebar", false);
 
@@ -36,7 +36,7 @@ const CreatePage: NextPage = () => {
   }, [setTitle, setHeader, setStyle, setOptions, setBlocks]);
 
   return (
-    <Layout>
+    <Layout title={"dashboard"}>
       <SEO title={title ? title : "Create a form"} icon={header.icon} />
       <Sidebar show={showSidebar} />
       <section className="w-screen h-screen overflow-y-auto flex-1 shadow-lg ring-1 ring-black/10">
