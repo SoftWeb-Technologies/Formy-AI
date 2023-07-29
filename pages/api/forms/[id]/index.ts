@@ -22,7 +22,7 @@ export default async function handler(
             },
             body: JSON.stringify({
                 operation: 'sql',
-                sql: `SELECT * FROM typiform.forms WHERE id='${id}'`,
+                sql: `SELECT * FROM formy.forms WHERE id='${id}'`,
             }),
         })
         const response = await request.json()
