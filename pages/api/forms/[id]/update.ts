@@ -24,7 +24,7 @@ export default (async function handler(
             },
             body: JSON.stringify({
                 operation: 'update',
-                schema: 'typiform',
+                schema: 'formy',
                 table: 'forms',
                 records: [body],
             }),
