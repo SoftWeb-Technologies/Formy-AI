@@ -29,7 +29,7 @@ export default (async function handler(
             },
             body: JSON.stringify({
                 operation: 'sql',
-                sql: `DELETE FROM typiform.forms WHERE id='${id}' AND workspace='${user?.sub}'`,
+                sql: `DELETE FROM formy.forms WHERE id='${id}' AND workspace='${user?.sub}'`,
             }),
         })
         const response = await request.json()
