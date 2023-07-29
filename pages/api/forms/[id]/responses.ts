@@ -18,7 +18,7 @@ export default async function handler(
             },
             body: JSON.stringify({
                 operation: 'sql',
-                sql: `SELECT * FROM typiform.responses WHERE formID='${id}' ORDER BY __createdtime__ DESC`,
+                sql: `SELECT * FROM formy.responses WHERE formID='${id}' ORDER BY __createdtime__ DESC`,
             }),
         })
         const response = await request.json()
