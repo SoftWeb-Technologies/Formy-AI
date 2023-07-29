@@ -22,7 +22,7 @@ export default async function handler(
             },
             body: JSON.stringify({
                 operation: 'upsert',
-                schema: 'typiform',
+                schema: 'formy',
                 table: 'forms',
                 records: [body],
             }),
