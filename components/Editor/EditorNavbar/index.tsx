@@ -20,10 +20,11 @@ import {
   optionsAtom,
   styleAtom,
 } from "../../../lib/atoms/form";
-import { LabelSwitch } from "../../../components/Editor/LabelSwitch/index";
 import { formOptions, formStyle } from "../../../lib/types/form";
 import { mutate } from "swr";
 import { useFetchAll } from "../../../lib/hooks/useFetchAll";
+import LabelSwitch from "../LabelSwitch";
+import { userAgent } from "next/server";
 
 const fontStyles = [
   { label: "Default", class: "font-sans" },
@@ -52,7 +53,8 @@ const EditorNavbar = ({
   const [, setOptions] = useAtom(optionsAtom);
   const [header] = useAtom(headerAtom);
   const [blocks] = useAtom(blocksAtom);
-  const { user } = useUser();
+  // const { user } = useUser();
+  const [user, setUser] = React.useState(true);
 
   return (
     <nav className="sticky top-0 inset-x-0 z-50 flex items-center gap-2 p-2 bg-white cursor-default text-sm">
@@ -126,96 +128,97 @@ const EditorNavbar = ({
               ))}
             </RadioGroup>
             <div className="py-2">
-              {/* <LabelSwitch
-                label="Small text"
-                checked={style.smallText}
-                onChange={(value: any) => {
-                  setStyle((state: any) => ({ ...state, smallText: value }));
-                }}
-              />
               <LabelSwitch
                 label="Wider layour"
                 checked={style.fullWidth}
                 onChange={(value: any) => {
                   setStyle((state: any) => ({ ...state, fullWidth: value }));
                 }}
-              /> */}
+              />
+
+              <LabelSwitch
+                label="Wider layour"
+                checked={style.fullWidth}
+                onChange={(value: any) => {
+                  setStyle((state: any) => ({ ...state, fullWidth: value }));
+                }}
+              />
             </div>
             <div className="py-2">
-              {/* <LabelSwitch
-                                label="Public responses"
-                                checked={!user ? true : options.publicResponses}
-                                onChange={(value: any) => {
-                                    if (!user) {
-                                        return toast.error(`Log in to change this setting`)
-                                    }
-                                    if (id) {
-                                        const updateForm = fetch(`/api/forms/${id}/update`, {
-                                            method: 'PATCH',
-                                            body: JSON.stringify({
-                                                id: id,
-                                                options: { ...options, publicResponses: value },
-                                            }),
-                                        })
-                                        toast
-                                            .promise(updateForm, {
-                                                loading: `Updating form`,
-                                                success: `Form has been updated`,
-                                                error: `Error while updating form`,
-                                            })
-                                            .then(() => {
-                                                mutate(`/api/forms/${id}`).then(() => {
-                                                    setOptions((state: any) => ({
-                                                        ...state,
-                                                        publicResponses: value,
-                                                    }))
-                                                })
-                                            })
-                                    } else {
-                                        setOptions((state: any) => ({
-                                            ...state,
-                                            publicResponses: value,
-                                        }))
-                                    }
-                                }}
-                            /> */}
-              {/* <LabelSwitch
-                                label="Lock responses"
-                                checked={!user ? false : options.lockedResponses}
-                                onChange={(value: any) => {
-                                    if (!user) {
-                                        return toast.error(`Log in first to lock form responses`)
-                                    }
-                                    if (id) {
-                                        const updateForm = fetch(`/api/forms/${id}/update`, {
-                                            method: 'PATCH',
-                                            body: JSON.stringify({
-                                                id: id,
-                                                options: { ...options, lockedResponses: value },
-                                            }),
-                                        })
-                                        toast
-                                            .promise(updateForm, {
-                                                loading: `Updating form`,
-                                                success: `Form has been updated`,
-                                                error: `Error while updating form`,
-                                            })
-                                            .then(() => {
-                                                mutate(`/api/forms/${id}`).then(() => {
-                                                    setOptions((state: any) => ({
-                                                        ...state,
-                                                        lockedResponses: value,
-                                                    }))
-                                                })
-                                            })
-                                    } else {
-                                        setOptions((state: any) => ({
-                                            ...state,
-                                            lockedResponses: value,
-                                        }))
-                                    }
-                                }}
-                            /> */}
+              <LabelSwitch
+                label="Public responses"
+                checked={!user ? true : options.publicResponses}
+                onChange={(value: any) => {
+                  if (!user) {
+                    return toast.error(`Log in to change this setting`);
+                  }
+                  if (id) {
+                    const updateForm = fetch(`/api/forms/${id}/update`, {
+                      method: "PATCH",
+                      body: JSON.stringify({
+                        id: id,
+                        options: { ...options, publicResponses: value },
+                      }),
+                    });
+                    toast
+                      .promise(updateForm, {
+                        loading: `Updating form`,
+                        success: `Form has been updated`,
+                        error: `Error while updating form`,
+                      })
+                      .then(() => {
+                        mutate(`/api/forms/${id}`).then(() => {
+                          setOptions((state: any) => ({
+                            ...state,
+                            publicResponses: value,
+                          }));
+                        });
+                      });
+                  } else {
+                    setOptions((state: any) => ({
+                      ...state,
+                      publicResponses: value,
+                    }));
+                  }
+                }}
+              />
+              <LabelSwitch
+                label="Lock responses"
+                checked={!user ? false : options.lockedResponses}
+                onChange={(value: any) => {
+                  if (!user) {
+                    return toast.error(`Log in first to lock form responses`);
+                  }
+                  if (id) {
+                    const updateForm = fetch(`/api/forms/${id}/update`, {
+                      method: "PATCH",
+                      body: JSON.stringify({
+                        id: id,
+                        options: { ...options, lockedResponses: value },
+                      }),
+                    });
+                    toast
+                      .promise(updateForm, {
+                        loading: `Updating form`,
+                        success: `Form has been updated`,
+                        error: `Error while updating form`,
+                      })
+                      .then(() => {
+                        mutate(`/api/forms/${id}`).then(() => {
+                          setOptions((state: any) => ({
+                            ...state,
+                            lockedResponses: value,
+                          }));
+                        });
+                      });
+                  } else {
+                    setOptions((state: any) => ({
+                      ...state,
+                      lockedResponses: value,
+                    }));
+                  }
+                }}
+              />
             </div>
             {id && (
               <div className="py-2">
@@ -250,17 +253,17 @@ const EditorNavbar = ({
                         workspace: workspace,
                       }),
                     });
-                    toast
-                      .promise(deleteForm, {
-                        loading: `Deleting form`,
-                        success: `Form has been deleted`,
-                        error: `Error while deleting form`,
-                      })
-                      .then(() => {
-                        mutate(`/api/forms/user/${user?.sub}`).then(() => {
-                          router.push(`/create`);
-                        });
-                      });
+                    // toast
+                    //   .promise(deleteForm, {
+                    //     loading: `Deleting form`,
+                    //     success: `Form has been deleted`,
+                    //     error: `Error while deleting form`,
+                    //   })
+                    //   .then(() => {
+                    //     mutate(`/api/forms/user/${user?.sub}`).then(() => {
+                    //       router.push(`/create`);
+                    //     });
+                    //   });
                   }}
                 >
                   <TrashIcon className="icon text-gray-400" />
@@ -274,32 +277,32 @@ const EditorNavbar = ({
       <button
         className="btn btn-primary"
         onClick={() => {
-          const request = fetch(`/api/forms`, {
-            method: "PATCH",
-            body: JSON.stringify({
-              id: id ? id : null,
-              title: title,
-              workspace: user?.sub,
-              style: style,
-              header: header,
-              options: !user
-                ? { publicResponses: true, lockedResponses: false }
-                : options,
-              blocks: blocks,
-            }),
-          });
-          toast
-            .promise(request, {
-              loading: `Wait, we're publishing your form`,
-              success: "Changes were published",
-              error: "Error updating form",
-            })
-            .then((res) => res.json())
-            .then(async ({ id }) => {
-              await mutate(`/api/forms/${id}`);
-              await mutate(`/api/forms/user/${user?.sub}`);
-              router.push(`/${id}`);
-            });
+          // const request = fetch(`/api/forms`, {
+          //   method: "PATCH",
+          //   body: JSON.stringify({
+          //     id: id ? id : null,
+          //     title: title,
+          //     workspace: user?.sub,
+          //     style: style,
+          //     header: header,
+          //     options: !user
+          //       ? { publicResponses: true, lockedResponses: false }
+          //       : options,
+          //     blocks: blocks,
+          //   }),
+          // });
+          // toast
+          //   .promise(request, {
+          //     loading: `Wait, we're publishing your form`,
+          //     success: "Changes were published",
+          //     error: "Error updating form",
+          //   })
+          //   .then((res) => res.json())
+          //   .then(async ({ id }) => {
+          //     await mutate(`/api/forms/${id}`);
+          //     await mutate(`/api/forms/user/${user?.sub}`);
+          //     router.push(`/${id}`);
+          //   });
         }}
       >
         <span>Publish</span>
@@ -310,7 +313,3 @@ const EditorNavbar = ({
 };
 
 export { EditorNavbar };
-
-function useUser(): { user: any } {
-  throw new Error("Function not implemented.");
-}

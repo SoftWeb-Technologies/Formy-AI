@@ -21,7 +21,8 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/404.js",
-    "pages/home/components/Feature.js"
+    "pages/home/components/Feature.js",
+    "components/Editor/LabelSwitch/index.js"
   ],
   "exclude": ["node_modules"]
 }

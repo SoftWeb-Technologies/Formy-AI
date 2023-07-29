@@ -20,22 +20,22 @@ import { Logo } from "../../common/Logo";
 import { useFetchAll } from "../../../lib/hooks/useFetchAll";
 
 const Sidebar = ({ show }: { show: boolean }) => {
-  const { user, isLoading, error } = useFetchAll();
-  const { forms, isLoadingForms, formsError } = useFetchAll(user?.sub);
   const router = useRouter();
   const [userForms, setUserForms] = React.useState([]);
 
-  React.useEffect(() => {
-    setUserForms(forms);
-  }, [forms]);
+  const [user, setUser] = React.useState(true);
 
-  if (isLoading || isLoadingForms) {
-    return <aside />;
-  }
-  if (formsError || Error) {
-    console.log(formsError || Error);
-    return <aside />;
-  }
+  // React.useEffect(() => {
+  //   setUserForms(forms);
+  // }, [forms]);
+
+  // if (isLoading || isLoadingForms) {
+  //   return <aside />;
+  // }
+  // if (formsError || Error) {
+  //   console.log(formsError || Error);
+  //   return <aside />;
+  // }
 
   return (
     <Transition
@@ -52,10 +52,10 @@ const Sidebar = ({ show }: { show: boolean }) => {
         <div className="flex items-center justify-between p-4">
           <Logo />
           {user && (
-            <a href="/api/auth/logout" className="btn text-sm">
+            <Link href="/api/auth/logout" className="btn text-sm">
               <span>Log Out</span>
               <LogoutIcon className="icon text-gray-500" />
-            </a>
+            </Link>
           )}
         </div>
         {!user ? (
@@ -66,13 +66,13 @@ const Sidebar = ({ show }: { show: boolean }) => {
                 Create an account and get access to all features
               </p>
               <div className="mt-2">
-                <a
+                <Link
                   href="/api/auth/login?returnTo=/create"
                   className="btn border border-gray-300 justify-center gap-4 hover:bg-gray-200"
                 >
                   <span>Log In</span>
                   <LoginIcon className="icon text-gray-500" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -89,15 +89,15 @@ const Sidebar = ({ show }: { show: boolean }) => {
                   className="w-full p-2 rounded border bg-transparent pl-8 border-gray-300 focus:ring-4 focus:ring-black/10 focus:border-gray-400 focus:outline-none transition-colors"
                   onChange={(e) => {
                     const target = e.target as HTMLInputElement;
-                    if (userForms) {
-                      setUserForms(
-                        forms.filter((form: any) =>
-                          forms.title
-                            .toLocaleLowerCase()
-                            .includes(target.value.toLocaleLowerCase())
-                        )
-                      );
-                    }
+                    // if (userForms) {
+                    //   setUserForms(
+                    //     forms.filter((form: any) =>
+                    //       forms.title
+                    //         .toLocaleLowerCase()
+                    //         .includes(target.value.toLocaleLowerCase())
+                    //     )
+                    //   );
+                    // }
                   }}
                 />
               </label>
@@ -110,23 +110,24 @@ const Sidebar = ({ show }: { show: boolean }) => {
                     key={form.id}
                     className="flex items-center hover:bg-gray-200 justify-between"
                   >
-                    <Link href={`/${form.id}`}>
-                      <a className="py-2 px-4 flex items-center gap-2 truncate w-full">
-                        {form.header.icon ? (
-                          <Image
-                            src={form.header.icon}
-                            alt="Icon"
-                            width={18}
-                            height={18}
-                            unoptimized={true}
-                          />
-                        ) : (
-                          <DocumentTextIcon className="icon text-gray-500" />
-                        )}
-                        <span className="w-full truncate">
-                          {form.title ? form.title : "Untitled form"}
-                        </span>
-                      </a>
+                    <Link
+                      href={`/${form.id}`}
+                      className="py-2 px-4 flex items-center gap-2 truncate w-full"
+                    >
+                      {form.header.icon ? (
+                        <Image
+                          src={form.header.icon}
+                          alt="Icon"
+                          width={18}
+                          height={18}
+                          unoptimized={true}
+                        />
+                      ) : (
+                        <DocumentTextIcon className="icon text-gray-500" />
+                      )}
+                      <span className="w-full truncate">
+                        {form.title ? form.title : "Untitled form"}
+                      </span>
                     </Link>
                     <Menu as="div" className="relative">
                       <Menu.Button className="p-2">
@@ -151,27 +152,27 @@ const Sidebar = ({ show }: { show: boolean }) => {
                                   { "bg-gray-100": active }
                                 )}
                                 onClick={() => {
-                                  const duplicateForm = fetch(`/api/forms`, {
-                                    method: "POST",
-                                    body: JSON.stringify({
-                                      ...form,
-                                      id: undefined,
-                                    }),
-                                  });
-                                  toast
-                                    .promise(duplicateForm, {
-                                      loading: `Duplicating form`,
-                                      success: `Redirecting to edit page`,
-                                      error: `Error while duplicating form`,
-                                    })
-                                    .then((res) => res.json())
-                                    .then(({ id }) => {
-                                      mutate(
-                                        `/api/forms/user/${user.sub}`
-                                      ).then(() => {
-                                        router.push(`/${id}/edit`);
-                                      });
-                                    });
+                                  // const duplicateForm = fetch(`/api/forms`, {
+                                  //   method: "POST",
+                                  //   body: JSON.stringify({
+                                  //     ...form,
+                                  //     id: undefined,
+                                  //   }),
+                                  // });
+                                  // toast
+                                  //   .promise(duplicateForm, {
+                                  //     loading: `Duplicating form`,
+                                  //     success: `Redirecting to edit page`,
+                                  //     error: `Error while duplicating form`,
+                                  //   })
+                                  //   .then((res) => res.json())
+                                  //   .then(({ id }) => {
+                                  //     mutate(
+                                  //       `/api/forms/user/${user.sub}`
+                                  //     ).then(() => {
+                                  //       router.push(`/${id}/edit`);
+                                  //     });
+                                  //   });
                                 }}
                               >
                                 <DuplicateIcon className="icon text-gray-500" />
@@ -187,25 +188,25 @@ const Sidebar = ({ show }: { show: boolean }) => {
                                   { "bg-gray-100": active }
                                 )}
                                 onClick={() => {
-                                  const deleteForm = fetch(
-                                    `/api/forms/${form.id}/delete`,
-                                    {
-                                      method: "DELETE",
-                                      body: JSON.stringify({
-                                        workspace: form.workspace,
-                                      }),
-                                    }
-                                  );
-                                  toast
-                                    .promise(deleteForm, {
-                                      loading: `Deleting form`,
-                                      success: `Form has been deleted`,
-                                      error: `Error while deleting form`,
-                                    })
-                                    .then(async () => {
-                                      await mutate(`/api/forms/${user.sub}`);
-                                      router.push(`/create`);
-                                    });
+                                  // const deleteForm = fetch(
+                                  //   `/api/forms/${form.id}/delete`,
+                                  //   {
+                                  //     method: "DELETE",
+                                  //     body: JSON.stringify({
+                                  //       workspace: form.workspace,
+                                  //     }),
+                                  //   }
+                                  // );
+                                  // toast
+                                  //   .promise(deleteForm, {
+                                  //     loading: `Deleting form`,
+                                  //     success: `Form has been deleted`,
+                                  //     error: `Error while deleting form`,
+                                  //   })
+                                  //   .then(async () => {
+                                  //     await mutate(`/api/forms/${user.sub}`);
+                                  //     router.push(`/create`);
+                                  //   });
                                 }}
                               >
                                 <TrashIcon className="icon text-gray-500" />
@@ -222,11 +223,12 @@ const Sidebar = ({ show }: { show: boolean }) => {
           </React.Fragment>
         )}
         <div>
-          <Link href="/create">
-            <a className="flex items-center gap-2 px-2 py-3 w-full border-t border-gray-300 hover:bg-gray-100 transition-colors">
-              <PlusIcon className="icon" />
-              <span>Create new form</span>
-            </a>
+          <Link
+            href="/create"
+            className="flex items-center gap-2 px-2 py-3 w-full border-t border-gray-300 hover:bg-gray-100 transition-colors"
+          >
+            <PlusIcon className="icon" />
+            <span>Create new form</span>
           </Link>
         </div>
       </aside>
